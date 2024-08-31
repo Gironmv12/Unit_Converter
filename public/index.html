@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Unidades</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <h1>Convertidor de Unidades</h1>
+    </header>
+
+    <!-- Tarjetas para seleccionar la conversión -->
+    <div class="cards">
+        <div class="card card_long" id="lengthCard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="#000" d="M8.25 2H6c-1.886 0-2.828 0-3.414.586C2 3.172 2 4.114 2 6v2.25h3a.75.75 0 0 1 0 1.5H2v1.5h2a.75.75 0 0 1 0 1.5H2v1.5h3a.75.75 0 0 1 0 1.5H2v1.5h2a.75.75 0 0 1 0 1.5H2c.001 1.24.02 1.888.337 2.361a2 2 0 0 0 .552.552C3.393 22 4.096 22 5.5 22c1.404 0 2.107 0 2.611-.337a2 2 0 0 0 .552-.552C9 20.607 9 19.904 9 18.5V11c0-.943 0-1.414.293-1.707C9.586 9 10.057 9 11 9h7.5c1.404 0 2.107 0 2.611-.337a2 2 0 0 0 .552-.552C22 7.607 22 6.904 22 5.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.473-.316-1.121-.336-2.361-.337v2a.75.75 0 0 1-1.5 0V2h-1.5v3a.75.75 0 0 1-1.5 0V2h-1.5v2a.75.75 0 0 1-1.5 0V2h-1.5v3a.75.75 0 0 1-1.5 0z"/></svg>
+            <p>Convertir Longitud</p>
+        </div>
+        <div class="card card_weigth" id="weightCard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><path fill="#000" d="M7.684 41.188c.146-4.908-2.524-6.756-5.78-7.977c-1.082 4.199 1.904 7.693 5.78 7.977m.737-21.915c2.076-4.445.356-7.211-2.16-9.618c-2.641 3.432-1.283 7.82 2.16 9.618m1.171 12.374c-.143-4.905 2.524-6.761 5.782-7.977c1.078 4.197-1.906 7.69-5.782 7.977m0 7.565c-.143-4.905 2.524-6.756 5.782-7.975c1.078 4.196-1.906 7.69-5.782 7.975m0-15.127c-.143-4.907 2.524-6.763 5.782-7.982c1.078 4.201-1.906 7.693-5.782 7.982m-1.908 9.539c.146-4.905-2.524-6.761-5.78-7.977c-1.082 4.197 1.904 7.691 5.78 7.977m0-7.562c.146-4.908-2.524-6.763-5.78-7.984c-1.082 4.203 1.904 7.692 5.78 7.984m36.769 37.007H18.142l13.157-22.796zM23.369 60.05h15.858l-7.929-13.735zM3.843 47.54l55.741-15.164l-.828-3.063L3.011 44.479zM43.176.634s.408 8.041 7.456 7.359c0 0 .795-6.718-7.456-7.359m7.379 26.153a4.08 4.08 0 0 1-3.339 1.716c-1.123 0-2.223-.528-2.965-1.268c-1.518-1.656-3.486-5.358-3.486-5.358c-1.103-2.239-1.694-3.971-1.694-5.722c0-3.73 3.019-6.965 6.759-6.965a6.74 6.74 0 0 1 4.726 1.93a6.73 6.73 0 0 1 4.724-1.93c3.739 0 6.758 3.235 6.758 6.965c0 1.751-.592 3.483-1.694 5.722c0 0-1.968 3.701-3.486 5.358c-.742.74-1.842 1.268-2.966 1.268a4.08 4.08 0 0 1-3.338-1.716z"/></svg>
+            <p>Convertir Peso</p>
+        </div>
+        <div class="card card_temp" id="temperatureCard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><g fill="none" stroke="#000" stroke-width="1.5"><path d="M12 22a5.5 5.5 0 0 0 3.439-9.793a1.114 1.114 0 0 1-.439-.86V5a3 3 0 1 0-6 0v6.348c0 .338-.175.648-.439.86A5.5 5.5 0 0 0 12 22Z"/><path d="M14.5 16.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0Z"/><path stroke-linecap="round" d="M12 14V5"/></g></svg>
+            <p>Convertir Temperatura</p>
+        </div>
+    </div>
+
+    <!-- Fondo oscuro para los popups -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Popup para convertir longitud -->
+    <div class="popup" id="lengthPopup">
+        <span class="popup-close" id="closeLengthPopup">&times;</span>
+        <h2>Convertir Longitud</h2>
+        <form id="convertLengthForm">
+            <input type="number" id="lengthValue" placeholder="Valor" required>
+            <select id="lengthFromUnit">
+                <option value="mm">Milímetros</option>
+                <option value="cm">Centímetros</option>
+                <option value="m">Metros</option>
+                <option value="km">Kilómetros</option>
+                <!-- Añadir más opciones según sea necesario -->
+            </select>
+            <select id="lengthToUnit">
+                <option value="mm">Milímetros</option>
+                <option value="cm">Centímetros</option>
+                <option value="m">Metros</option>
+                <option value="km">Kilómetros</option>
+                <!-- Añadir más opciones según sea necesario -->
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
+        <div id="lengthResult"></div>
+    </div>
+
+    <!-- Popup para convertir peso -->
+    <div class="popup" id="weightPopup">
+        <span class="popup-close" id="closeWeightPopup">&times;</span>
+        <h2>Convertir Peso</h2>
+        <form id="convertWeightForm">
+            <input type="number" id="weightValue" placeholder="Valor" required>
+            <select id="weightFromUnit">
+                <option value="mg">Miligramos</option>
+                <option value="g">Gramos</option>
+                <option value="kg">Kilogramos</option>
+                <option value="ton">Toneladas</option>
+                <option value="oz">Onzas</option>
+                <option value="lb">Libras</option>
+                <!-- Añadir más opciones según sea necesario -->
+            </select>
+            <select id="weightToUnit">
+                <option value="mg">Miligramos</option>
+                <option value="g">Gramos</option>
+                <option value="kg">Kilogramos</option>
+                <option value="ton">Toneladas</option>
+                <option value="oz">Onzas</option>
+                <option value="lb">Libras</option>
+                <!-- Añadir más opciones según sea necesario -->
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
+        <div id="weightResult"></div>
+    </div>
+
+    <!-- Popup para convertir temperatura -->
+    <div class="popup" id="temperaturePopup">
+        <span class="popup-close" id="closeTemperaturePopup">&times;</span>
+        <h2>Convertir Temperatura</h2>
+        <form id="convertTemperatureForm">
+            <input type="number" id="temperatureValue" placeholder="Valor" required>
+            <select id="temperatureFromUnit">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+                <option value="K">Kelvin</option>
+            </select>
+            <select id="temperatureToUnit">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+                <option value="K">Kelvin</option>
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
+        <div id="temperatureResult"></div>
+    </div>
+
+    <script>
+        // Función para mostrar el popup
+        function showPopup(popupId) {
+            document.getElementById(popupId).classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        // Función para cerrar el popup
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        // Mostrar popups al hacer clic en las tarjetas
+        document.getElementById('lengthCard').addEventListener('click', () => showPopup('lengthPopup'));
+        document.getElementById('weightCard').addEventListener('click', () => showPopup('weightPopup'));
+        document.getElementById('temperatureCard').addEventListener('click', () => showPopup('temperaturePopup'));
+
+        // Cerrar popups al hacer clic en el botón de cerrar
+        document.getElementById('closeLengthPopup').addEventListener('click', () => closePopup('lengthPopup'));
+        document.getElementById('closeWeightPopup').addEventListener('click', () => closePopup('weightPopup'));
+        document.getElementById('closeTemperaturePopup').addEventListener('click', () => closePopup('temperaturePopup'));
+
+        // Función para manejar la conversión de longitud
+        document.getElementById('convertLengthForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const value = document.getElementById('lengthValue').value;
+            const fromUnit = document.getElementById('lengthFromUnit').value;
+            const toUnit = document.getElementById('lengthToUnit').value;
+
+            const response = await fetch('/api/convert/length', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value, fromUnit, toUnit })
+            });
+
+            const data = await response.json();
+            document.getElementById('lengthResult').innerText = `Resultado: ${data.result}`;
+        });
+
+        // Función para manejar la conversión de peso
+        document.getElementById('convertWeightForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const value = document.getElementById('weightValue').value;
+            const fromUnit = document.getElementById('weightFromUnit').value;
+            const toUnit = document.getElementById('weightToUnit').value;
+
+            const response = await fetch('/api/convert/weight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value, fromUnit, toUnit })
+            });
+
+            const data = await response.json();
+            document.getElementById('weightResult').innerText = `Resultado: ${data.result}`;
+        });
+
+        // Función para manejar la conversión de temperatura
+        document.getElementById('convertTemperatureForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const value = document.getElementById('temperatureValue').value;
+            const fromUnit = document.getElementById('temperatureFromUnit').value;
+            const toUnit = document.getElementById('temperatureToUnit').value;
+
+            const response = await fetch('/api/convert/temperature', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value, fromUnit, toUnit })
+            });
+
+            const data = await response.json();
+            document.getElementById('temperatureResult').innerText = `Resultado: ${data.result}`;
+        });
+    </script>
+</body>
+</html>

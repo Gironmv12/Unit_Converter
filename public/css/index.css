@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* Estilos para las tarjetas */
+body{
+    background-color: #060502;
+}
+header{
+    color: white;
+    padding: 16px;
+    text-align: center;
+}
+
+header h1{
+    font-size: 34px;
+    margin-bottom: 8px;
+    color: #fcc602;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+}
+/* Estilos para las tarjetas */
+.card {
+    background-color: white;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Añadir transición para transform */
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card_long {
+    background-color: #fcc602;
+}
+
+.card_weigth {
+    background-color: #ff6f61;
+}
+
+.card_temp {
+    background-color: #6ec1e4;
+}
+
+.card svg {
+    margin-bottom: 16px;
+}
+
+.card p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform: scale(1.05); /* Añadir escala suave al hacer hover */
+}
+
+
+/* Estilos para los popups */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 24px;
+    background-color: #060502; /* Fondo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    color: white; /* Color de texto blanco */
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    color: white; /* Color de texto blanco */
+}
+
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #fcc602; /* Color amarillo */
+}
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.popup input,
+.popup select,
+.popup button {
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.popup input,
+.popup select {
+    background-color: #333; /* Fondo oscuro para inputs y selects */
+    color: white; /* Color de texto blanco */
+}
+
+.popup button {
+    background-color: #fcc602; /* Fondo amarillo */
+    color: #060502; /* Color de texto oscuro */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup button:hover {
+    background-color: #e5b800; /* Fondo amarillo más oscuro al hacer hover */
+}
+
+#lengthResult {
+    margin-top: 16px;
+    font-size: 18px;
+    color: #fcc602; /* Color amarillo */
+}
+#weightResult{
+    margin-top: 16px;
+    font-size: 18px;
+    color: #ff6f61; /* Color naranja */
+}
+#temperatureResult{
+    margin-top: 16px;
+    font-size: 18px;
+    color: #6ec1e4; /* Color azul */
+}
+
+/* Estilos para el fondo oscuro */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
